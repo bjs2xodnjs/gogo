@@ -2040,7 +2040,7 @@ const sayArrow2 = (_word) => console.log(_word);
 const sayArrow3 = (_word) => console.log(_word);
 ```
 
-- 매개변수가 2개 이상일 때
+- 매개변수가 2개 이상일 때 적용
 
 ```js
 // 기본 함수
