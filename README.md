@@ -530,13 +530,14 @@ const ticket_2 = {
   place: "서울",
   day: "05/09",
 };
+
 console.log(ticket_2);
-console.log(ticket_1.["title"]);
-console.log(ticket_1.["img"]);
-console.log(ticket_1.["url"]);
-console.log(ticket_1.["rank"]);
-console.log(ticket_1.["place"]);
-console.log(ticket_1.["day"]);
+console.log(ticket_1["title"]);
+console.log(ticket_1["img"]);
+console.log(ticket_1["url"]);
+console.log(ticket_1["rank"]);
+console.log(ticket_1["place"]);
+console.log(ticket_1["day"]);
 
 const ticket_3 = {
   title: "뮤지컬 <라이카>",
@@ -575,48 +576,59 @@ const ticketInfoJsonArr = [
     day: "05/04",
   },
 ];
-titkctInfoJsonArr[0]
-titkctInfoJsonArr[1]
-titkctInfoJsonArr[2]
 
+ticketInfoJsonArr[0].title;
+ticketInfoJsonArr[1].title;
+ticketInfoJsonArr[2].title;
 ```
 
 ## 2. 연산자(Operator)
 
-- 연산을 해서 결과값을 만드는 기호
-- 연산자에 의한 새로운 `결과값이 나오는 것을 연산식`
+- 연산을 해서 결과값을 만드는 `기호`
+- 연산자 에 의한 새로운 `결과값이 나오는 것을 연산식`
 
 ### 2.1. 사칙연산(`+ - * /`)
 
 - `+ 연산자`
 
 ```js
-const strA = "0";
-const strB = "1";
+const numA = 0;
+const numB = 1;
 const result = numA + numB; // 1
 ```
 
 ```js
 const strA = "안녕";
 const strB = "hello";
-const result = numA + numB; // 안녕hello
+const result = strA + strB; // "안녕hello"
 ```
 
 ```js
 const strA = "홍길동";
-const result = "저기~" + "strA + 님은 나이가" + numAge + "이군요!"; // 저기~ 홍길동님은 나이가 20이군요!"
-// 숫자 + 글자 는 글자로 인정함.
 
-// 아래처럼 템플릿 문법을 추천합니다. 흔히 백틱 이라고 합니다.
-const resultTemplate = `저기~ ${steA}님은 나이가 ${numAge} 이군요!`;
+// "저기~ 홍길동님 반가워요!"
+const result = "저기~ " + strA + "님 반가워요!";
 ```
 
 ```js
-<div class= "section">
-  <div class= "box_wrap">
-    <a href= "https:~">링크</a>
-        <img src= "https:~" alt "배너" />
-</div>
+const strA = "홍길동";
+const numAge = 20;
+
+// "저기~ 홍길동님은 나이가 20이군요!"
+// 숫자+글자 는 글자로 인정함.
+const result = "저기~ " + strA + "님은 나이가 " + numAge + "이군요!";
+// 아래처럼 템플릿 문법을 추천합니다. 흔히 백틱 이라고 합니다.
+const resultTemplate = `저기~ ${strA}님은 나이가 ${numAge}이군요!`;
+```
+
+- 참고 예제
+
+```html
+<div class="section">
+  <div class="box_wrap">
+    <a href="https:~">뮤지컬 팬텀</a>
+    <img src="https:~" alt="뮤지컬 팬텀 배너이미지" />
+  </div>
 </div>
 ```
 
@@ -639,25 +651,25 @@ const tag = `
 <div class="section">
   <div class="box_wrap">
     <a href="${link}">${title}</a>
-    <img src=${img}" alt="${alt}" />
+    <img src="${img}" alt="${alt}" />
   </div>
 </div>
 `;
 ```
 
 ```js
-const numA
-const numB
+const numA = 5;
+const numB = 8;
 const resultA = `${numA} + ${numB} = ${numA + numB}`;
-const resultB = `${numA} + ${numB} = ${numA - numB}`;
-const resultC = `${numA} + ${numB} = ${numA * numB}`;
-const resultD = `${numA} + ${numB} = ${numA / numB}`;
+const resultB = `${numA} - ${numB} = ${numA - numB}`;
+const resultC = `${numA} * ${numB} = ${numA * numB}`;
+const resultD = `${numA} / ${numB} = ${numA / numB}`;
 ```
 
 ```js
-const a = 1; //number
+const a = 1; // number
 const b = "1"; // string
-// 1단계 number  ====> string 으로 물어보지 않고 변환 (암묵적 데이터 타입 변환)
+// 1단계 number ===> string 으로 물어보지 않고 변환(암묵적 데이터 타입 변환)
 // string + string ====> string
 const result = a + b;
 ```
@@ -671,22 +683,22 @@ const result = numA - numB; // 90
 ```
 
 ```js
-const numA = "100"; //string
-const numB = 10; //number
+const numA = "100"; // string
+const numB = 10; // number
 // string 을 number 로 암묵적 변환
 // number - number
 const result = numA - numB; // 90
 ```
 
 ```js
-const numA = "ABC"; //string
-const numB = 10; //number
-// string 을 number 로 암묵적 변환 실패!!
+const numA = "ABC"; // string
+const numB = 10; // number
+// string 을 number 로 암묵적 변환 실패
 // string - number
-const result = numA - numB; // NaN (Not a Number)
+const result = numA - numB; // NaN  ( Not a Number )
 ```
 
-- `* / 연산자`
+- `*  /  연산자`
 
 ```js
 const numA = 4;
@@ -695,11 +707,11 @@ const resultMulti = numA * numB; // 8
 const resultDevide = numA / numB; // 2
 ```
 
-### 2.2. 나머지 연산(`%`) [이거 중요!!]
+### 2.2. 나머지 연산 (`%`)
 
 - 총 게시글 52개
 - 한 페이지당 5개 목록
-- 몇 페이지가 필요한가?
+- 몇페이지가 필요한가?
 - 마지막 페이지에서 보여주어야 하는 게시글 수?
 
 ```js
@@ -730,11 +742,11 @@ result *= 4; // 52
 // result = result / 2;
 result /= 2; // 26
 
-// result = result % 2;  % 는 나머지, 모듈러 연산자
-result /= 2; // 0
+// result = result % 2;  % 는 나머지 연산자, 모듈러 연산자
+result %= 2; // 0
 ```
 
-### 2.4. 증감연산자 (++ -- )
+### 2.4. 증감연산자 ( ++ -- )
 
 - 개발자는 타이핑 수를 줄이려고 노력합니다.
 
@@ -754,26 +766,26 @@ num--;
 --num;
 ```
 
-- 몰랐으면...
+- 몰랐으며...
 
 ```js
 let num = 20;
 // 후에 배치된 후치연산 이라서
-let numA = num--; // numA 에는 20 입니다. 그리고 연산
+let numA = num--; // numA 에는 20입니다. 그리고 연산
 num; // 19
 ```
 
 ```js
 let num = 20;
 // 전에 배치된 전치연산 이라서
-let numA = --num; // numA 에는 19 입니다. 그리고 연산
+let numA = --num; // numA 에는 19입니다. 그리고 연산
 num; // 19
 ```
 
-### 2.5. 논리연산자 [이거 중요!!]
+### 2.5. 논리연산자
 
 - `무조건 이해`하셔야 합니다.
-- `falsy` 한 값의 종류 (js에서 false 라고 판단하는 값)
+- `falsy` 한 값의 종류 (js 에서 false 라고 판단하는 값)
 
 ```js
 "";
@@ -788,7 +800,7 @@ false;
 
 #### 2.5.1. OR 연산자 (또는)
 
-- OR 연산자 : 2개 중 1개만 true 이면 true, 나머지 false
+- 2개 중 1개만 true 이면 true, 나머지 false
 
 ```js
 let result = true || true;
@@ -796,13 +808,13 @@ result = false || false;
 result = false || true;
 result = "" || true;
 
-let userPass; //undefined 로 자바스크립에서 에러가 발생하지 않는다.
+let userPass;
 result = userPass || "비밀번호 넣으세요.";
 ```
 
 #### 2.5.2. AND 연산자 (그리고)
 
-- 둘 다 true 면 true, 아니면 false
+- 둘다 true 면 true, 아니면 false
 - 변수에 결과값은 true, false 가 담겨진다.
 
 ```js
@@ -821,8 +833,8 @@ result = !false;
 #### 2.5.4. 실습 예제
 
 ```js
-let nickName = ""; // 요거 거짓
-let displayName = Nickname || "Guest";
+let nickName = "";
+let displayName = nickName || "Guest";
 console.log(displayName); // Guest
 ```
 
@@ -852,13 +864,12 @@ console.log(result);
 
 ```js
 let config = {};
-config.theme = config.theme: "light";
-console,log(config); // {theme: "right" }
-
+config.theme = config.theme || "light";
+console.log(config); // { theme: "light" }
 ```
 
 ```js
-let option = {
+let options = {
   lang: null,
   fontSize: 0,
 };
@@ -866,7 +877,7 @@ let lang = options.lang || "ko";
 let fontSize = options.fontSize || 20;
 ```
 
-### 2.6. 비교연산자 (이것도 정말중요!!)
+### 2.6. 비교연산자
 
 - 정말 중요합니다.
 
@@ -881,35 +892,30 @@ let resultC = 1 > 2;
 let resultD = 1 < 2;
 let resultE = 1 >= 2;
 let resultF = 1 <= 2;
-let resultG = 1 != 2; // != 다르다.
-let resultH = 1 !== 2; // 다르다.
+let resultG = 1 != 2;
+let resultH = 1 !== 2;
 ```
 
-### 2.7. 병합연산자 (내가 FE라면 반드시 알아야 함.)
+### 2.7. 병합연산자
 
-- 내가 FrontEnd 라면 반드시 알아야 함.
-- 일반덕으로 기본값 셋팅에서 활용
-- false 가 아니라 `null, undefined` 일 때만 값을 비교할 경우
-- 아래에서 기대한 코드는 0 값이 나오길 기대하고 코드 진행함.
-
-```js
-let userName = null;
-let displayName = userNAme ?? "Guest";
-```
+- 내가 FE 라면 반드시 알아야 함.
+- 일반적으로 기본값 셋팅에서 활용
+- falsy 가 아니라 `null, undefined` 일 때만 값을 비교할 경우
+- 아래에서 기대한 코드는 `0` 값이 나오길 기대하고 코드 진행함.
 
 ```js
 let userPoint = 0;
-let displayName = userPoint || 500000;
-comsole.log(displayPoint);
+let displayPoint = userPoint || 500000;
+console.log(displayPoint);
 ```
 
 - `??` 연산자는 null 과 undefined 만 비교한다.
-- 나머지는 `||` 똑같다.
+- 나머지는 `||` 과 같다.
 
 ```js
 let userPoint = 0;
-let displayName = userPoint ?? 500000; // 물음표의 의미가 뭘까?
-comsole.log(displayPoint);
+let displayPoint = userPoint ?? 500000;
+console.log(displayPoint);
 ```
 
 ```js
@@ -923,37 +929,23 @@ const email = formInput.email ?? "이메일 없음";
 const phone = formInput.phone ?? "전화 없음";
 ```
 
-### 2.8. 옵셔널체이닝 (`?.`)
+### 2.8. 옵셔널체이닝(`?.`)
 
-- FrontEnd 라면 알아야 한다.
-- 대상은 객체의 속성 존재 여부에 따라 코드 진행.
+- FE 라면 알아야 합니다.
+- 객체의 `속성 존재 여부`에 따라 코드 진행.
 - `{ 속성:값, }`
 
 ```js
 const user = {
   profile: null,
 };
-const age = user.profile?.age ?? "정보가 없어서 나이정보를 몰라요"; //  null Error 발생 후 서비스 멈춤.
-```
-
-```js
-const user = {
-  profile: { age; 10, name: "홍길동" },
-};
-const age = user.profile.age; // 정상으로 돌아감
-```
-
-```js
-const user = {
-  profile: { name: "홍길동" },
-};
-const age = user.profile?.age; // null Error 발생 후 서비스 멈춤. (물음표가 옵션)
+const age = user.profile?.age ?? "정보가 없어서 나이정보를 몰라요"; // null Error 발생 후 서비스 멈춤
 ```
 
 ### 2.9. 3항 연산자
 
 - 연산자가 3개라서 3항 연산자라고 합니다.
-- `결과 = 조건식 ? 참일때 결과 : 거짓일때 결과`
+- `결과 = 조건식 ? 참일때 결과 : 거짓일때 결과;`
 - 활용 빈도가 너무 높습니다.
 
 ```js
@@ -969,15 +961,15 @@ const result = age < 19 ? "동의서 필요" : "성인 인증";
 
 ```js
 const goodCount = 10;
-const result = goodCount > 0 ? "재고가 있어요." : "재고가 없어요";
+const result = goodCount > 0 ? "재고가 있어요" : "재고가 없어요";
 ```
 
 ```js
 const user = {
   isLogin: true,
-  name = "아이유",
+  name: "아이유",
 };
-const result = user.isLogin ? `${user.name}님 반가워요.`: "로그인 해 주세요.";
+const result = user.isLogin ? `${user.name}님 반가워요.` : "로그인 해 주세요.";
 ```
 
 ```js
@@ -986,6 +978,8 @@ let result = num % 2 === 0 ? "짝수" : "홀수";
 ```
 
 ## 3. 조건문(Condition)
+
+### 3.1. if 문
 
 - `참/거짓`을 판단하여 코드 분기 실행함.
 - 모양 1.
@@ -999,7 +993,6 @@ if(조건) {
 ```
 
 - 모양 2.
-<!-- - 추천 -->
 
 ```js
 if(조건) {
@@ -1035,19 +1028,18 @@ if(조건1) {
 }
 ```
 
-- 예제) 로그인이 된 경우에 메세지 출력하기.
+- 예제) 로그인이 된 경우에 메세지 출력하기
 
 ```js
 const isLogin = true;
 if (isLogin === true) {
   console.log("로그인하셨네요. 반갑습니다.");
-  console.log("오늘도 좋은 하루 되세요 ㅠㅠㅠㅠㅠㅠ.");
 }
 
 if (isLogin) {
   console.log("로그인하셨네요. 반갑습니다.");
 }
-// 아래처럼 하시면 힘들어요. 코드 가독성 떨어져요. (중괄호 추천)
+// 아래처럼 하시면 힘들어요. 코드 가독성 떨어져요.
 if (isLogin) console.log("로그인하셨네요. 반갑습니다.");
 ```
 
@@ -1062,24 +1054,7 @@ if (isLogin) {
 }
 ```
 
--- 예제) 나이에 따라서 다른 메시지 출력하기 (조건이 2개이상인 경우)
-
-```js
-const age = 19;
-if (age >= 19) {
-  console.log("20 대 이시네요.");
-} else if (age >= 30) {
-  console.log("30대 이시네요.");
-} else if (age >= 40) {
-  console.log("40대 이시네요.");
-} else if (age >= 50) {
-  console.log("50대 이시네요.");
-} else if (age >= 60) {
-  console.log("어르신 이시네요.");
-} else {
-  console.log("미성년 이시네요.");
-}
-```
+- 예제) 나이에 따라서 다른 메시지 출력하기 (조건이 2개이상인 경우)
 
 ```js
 const age = 100;
@@ -1101,25 +1076,32 @@ if (age >= 60) {
 - 예) 사용자가 입력한 항목이 값이 `없을 경우` 메시지 보내기 (필수 입력 사항)
 
 ```js
-const name = "홍길동";
+const name = "";
 const pass = "1234";
-const infoCheck = false; // 사용자 정보 활용 동의
-const userEmailCheck = false; // 이메일 수신 동의
+const useInfoCheck = false; // 사용자 정보 활용 동의
+const useEmailCheck = false; // 이메일 수신 동의
 
 if (name === "") {
   alert("이름을 입력하세요.");
   return;
 }
+
 if (!name) {
   alert("이름을 입력하세요.");
   return;
 }
+
 if (pass === "") {
-  alert("비밀번호를 입력하세요.");
+  alert("비밀번호 입력하세요.");
   return;
 }
-if (!pass === "") {
-  alert("비밀번호를 입력하세요.");
+if (!pass) {
+  alert("비밀번호 입력하세요.");
+  return;
+}
+
+if (useInfoCheck === false) {
+  alert("개인정보 동의를 체크하세요.");
   return;
 }
 if (!useInfoCheck) {
@@ -1127,11 +1109,15 @@ if (!useInfoCheck) {
   return;
 }
 if (useEmailCheck === false) {
-  alert("이메일 수신 동의를 체크해 주세요.");
+  alert("이메일 수신 동의를 체크해주세요.");
   return;
-
-  console.log("저희 서비스를 자유롭게 활용하세요.");
 }
+if (!useEmailCheck) {
+  alert("이메일 수신 동의를 체크해주세요.");
+  return;
+}
+
+console.log("저희 서비스를 자유롭게 활용하세요.");
 ```
 
 ### 3.2. switch 문
@@ -1140,25 +1126,27 @@ if (useEmailCheck === false) {
 
 ```js
 switch (값) {
-  case 비교값 1:
-                  실행코드
+  case 비교값1:
+                실행 코드
     break;
-  case 비교값 2:
-                  실행코드
+  case 비교값2:
+                실행 코드
     break;
-  case 비교값 3:
-                  실행코드
+  case 비교값3:
+                실행 코드
     break;
-       defalut:
-                  실행코드
+  default:
+              실행 코드
+    break;
 }
 ```
 
 - 예) 엘리베이터 층 예제
 
 ```js
-const Layer = 5; // 값
-switch (later) {
+const layer = 5; // 값
+
+switch (layer) {
   case 1:
     console.log("1층 내리세요.");
     break;
@@ -1180,10 +1168,11 @@ switch (later) {
 }
 ```
 
-- if와 switch 종합 예제
+- if 와 switch 종합 예제
 
 ```js
 const userRole = "ADMIN";
+
 if (userRole === "MEMBER") {
   console.log("회원");
 } else if (userRole === "ADMIN") {
@@ -1191,24 +1180,21 @@ if (userRole === "MEMBER") {
 } else {
   console.log("비회원");
 }
-```
 
-```js
 switch (userRole) {
-  case "MEMBER:"
-  console.log("회원");
-  break;
-case "ADMIN:"
-  console.log("관리자");
-  break;
-default:
-  console.log("비회원");
-
+  case "MEMBER":
+    console.log("회원");
+    break;
+  case "ADMIN":
+    console.log("관리자");
+    break;
+  default:
+    console.log("비회원");
+    break;
 }
-
 ```
 
-## 4. 반복문 (Loop)
+## 4. 반복문(Loop)
 
 - 동일한 실행을 반복하는 문법.
 
@@ -1229,10 +1215,10 @@ for (let i = 0; i < total; i++) {
 }
 ```
 
-- 예제) 총 합계 값 알아내기.
+- 예제) 총 합계 값 알아내기
 
 ```js
-// 장바구니 담긴 제품 가격 모음.git
+// 장바구니 담긴 제품 가격 모음.
 const bucketsArr = [1000, 500, 700, 400];
 // 반복 횟수
 const total = bucketsArr.length;
@@ -1303,17 +1289,38 @@ for (let i = 1; i <= total; i++) {
 - for 문으로 모두 가능하다.
 - for 를 `객체를 대상`으로 편리하게 사용하도록 지원하는 문법
 
+```js
+// for in 구문 예제 (대상은 객체 속성 반복)
+const singer = {
+  id: "123",
+  name: "아이유",
+  age: 30,
+  city: "서울",
+};
+// 개발자가 직접 알아내는 경우
+// console.log(singer.id);
+// console.log(singer.name);
+// console.log(singer.age);
+
+// 반복문 활용
+for (let key in singer) {
+  console.log(key);
+  console.log(singer[key]);
+}
+```
+
 ### 4.3. for of 구문
 
 - for 문으로 모두 가능하다.
-- for 를 `배열, 문자열등을 대상`으로 편리하게 사용하도록 지원하는 문법
-- interator 즉, `순서가 있는 데이터형`에서 사용
+- for 를 `배열, 문자열 등을 대상`으로 편리하게 사용하도록 지원하는 문법
+- `iterator` 즉, `순서가 있는 데이터형`에서 사용
 
 ```js
 const citiesArr = ["대구", "서울", "부산"];
 for (let city of citiesArr) {
   console.log(city);
 }
+
 const words = "안녕하세요.반가워요.";
 for (let i of words) {
   console.log(i);
@@ -1336,7 +1343,7 @@ while (조건) {
 let count = 0;
 
 while (count < 5) {
-  // 거짓을 만들기 위한 조건을 사용함.
+  // 거짓을 만들기 위한 조건을 작성함.
   count = count + 1;
   console.log(count);
 }
@@ -1352,22 +1359,33 @@ do {
 } while (조건);
 ```
 
-## 5. 함수 (function)
+```js
+let count = 0;
 
-- 독립된 역할별 기능을 `{}` 묶고 `function 함수명()` 를 주어서 관리
-- 여러번 재활용.(`호출, call`) : `함수명()`
-- 문서 즉 설명서가 잘 만들어져야 한다.
-- 예외처리를 잘 해야 한다.
+do {
+  // 거짓을 만들기 위한 조건을 작성함.
+  count = count + 1;
+  console.log(count);
+} while (count < 5);
+```
+
+## 5. 함수(function)
+
+- 각 독립된 역할별 기능을 `{}` 묶고 `function 함수명()` 를 주어서 관리
+- 여러번 재활용(`호출, call`)한다. : `함수명()`
+- 문서 즉 설명서(JSDoc)가 잘 만들어져야 함.
+- 기능 예외처리를 잘 해야 한다.
 
 ### 5.1. 함수가 왜 필요하지?
 
-- 반복되는 1줄 이상의 코드가 있다면 함수라는 것을 만들 생각해보자.
-- 코드에 대한 가독성 및 필요하면 함수라는 것을 만들 생각해 보자.
+- 반복되는 1줄 이상의 코드가 있다면 함수라는 것을 만들 생각해 보자.
+- 코드에 대한 가독성이 필요하면 함수라는 것을 만들 생각해 보자.
 - 한번에 코드를 수정하여 다양한 곳에 동시에 반영되는 것을 원하면 함수라는 것을 만들 생각해 보자.
+- 코드에 안정성을 생각한다면 함수라는 것을 만들 생각해 보자.
 - 협업을 한다면 기능을 만들어서 재활용하여야 하며 이때 함수라는 것을 만들 생각해 보자.
 
 ```js
-// 아래에는 사용자의 명단과 반가워요라는 메세지를 출력하는 기능이다.
+// 아래는 사용자의 명단과 반가워요라는 메세지를 출력하는 기능이다.
 let user_1 = "홍길동";
 let user_2 = "김길동";
 let user_3 = "박길동";
@@ -1383,8 +1401,8 @@ console.log(user_5 + "님 반가워요.");
 - 기능을 구분해서 관리하고 싶다. (여기서는 회원명단 및 인사 기능)
 
 ```js
-// 아래에는 사용자의 명단과 반가워요라는 메세지를 출력하는 기능이다.
-function userMember() {
+// 아래는 사용자의 명단과 반가워요라는 메세지를 출력하는 기능이다.
+function useMember() {
   let user_1 = "홍길동";
   let user_2 = "김길동";
   let user_3 = "박길동";
@@ -1396,29 +1414,24 @@ function userMember() {
   console.log(user_4 + "님 반가워요.");
   console.log(user_5 + "님 반가워요.");
 }
-
-// 함수활용, 함수 호출, 함수 call
-userMember();
-userMember();
-userMember();
-userMember();
-userMember();
+// 함수 활용, 함수 호출, 함수 call
+useMember();
+useMember();
+useMember();
+useMember();
+useMember();
 ```
 
 ### 5.2. 함수 만들기
 
 ```js
-// 함수 이름은 동사로 짓는다. ()
+// 함수 이름은 동사로 짓는다.
 function 함수명() {
   기능1;
   기능2;
   기능3;
 }
-```
-
-```js
-// 함수 이름은 동사로 짓는다. ()
-function 함수명(재료1, 재료2, 재료3){
+function 함수명(재료1, 재료2, 재료3) {
   재료1 처리 기능1;
   재료2 처리 기능2;
   재료3 처리 기능3;
@@ -1440,24 +1453,26 @@ const result_4 = 6 + 1;
 - 단계 2.
 
 ```js
+// 계산기 만들기
 function result_1() {
   5 + 4;
-  }
-const result_2 () {
+}
+function result_2() {
   8 + 3;
-  }
-const result_3 () {
+}
+function result_3() {
   7 + 2;
-  }
-const result_4 () {
+}
+function result_4() {
   6 + 1;
-  }
+}
 ```
 
 - 단계 3. 재료만 다르고 하는 일은 + 기능이다.
 
 ```js
-function add(재료, 재료2) {
+// 계산기 만들기
+function add(재료1, 재료2) {
   재료1 + 재료2;
 }
 add(5, 4);
@@ -1475,19 +1490,21 @@ function minus(매개변수1, 매개변수2) {
 minus(5, 4);
 ```
 
-- 단계 5. 기능에 예외처리(오류) 적용하기
+- 단계 5. 기능에 예외처리(오류 처리) 적용하기
 - 오류 : 원하지 않는 결과, Error도 모두 포함해서 오류라 생각합니다.
 
 ```js
-function add(매개변수1, 매개변수2)
-  // 방어코드 ( 예외처리 )
+function add(매개변수1, 매개변수2) {
+  // 방어코드 (예외처리)
   if (매개변수1 === undefined) {
     return alert("매개변수 1 을 입력하세요.");
+  }
   if (매개변수2 === undefined) {
     return alert("매개변수 2 을 입력하세요.");
   }
   매개변수1 + 매개변수2;
 }
+
 function minus(매개변수1, 매개변수2) {
   매개변수1 - 매개변수2;
 }
@@ -1497,30 +1514,30 @@ add(5, undefined); // 원하지 않는 결과이므로 오류
 add(5); // 원하지 않는 결과이므로 오류
 ```
 
-### 5.4. JSDoc 으로 함수 사용에 대해서 안내(설명서)하기
+### 5.4. JSDoc 으로 함수 사용에 대해서 안내(설명서) 하기
 
-- JSDoc 기본 이해
-- 재료를 parameter 라고 합니다.
+- jsDoc 기본 이해
+- 재료, 매개변수를 parameter 라고 합니다.
 
 ```js
 /**
  * 두개의 변수를 받아서 덧셈하는 기능
- * @param {number} numA - 첫번째 숫자
- * @param {number} numB - 두번째 숫자
- * @returns {number} 두 숫자의 덧셈결과
+ *  @param {number} numA - 첫번째 숫자
+ *  @param {number} numB - 두번째 숫자
+ *  @returns {number} 두 숫자의 덧셈결과
  */
 function add(numA, numB) {
   if (numA === undefined) {
-    return alert("첫 번째 매개변수 입력해주세요.");
+    return alert("첫번째 매개변수 입력해주세요.");
   }
   if (numB === undefined) {
-    return alert("두 번째 매개변수 입력해주세요.");
+    return alert("두번째 매개변수 입력해주세요.");
   }
   return numA + numB;
 }
 ```
 
-### 5.5. JSDoc 을 이용한 계산기 함수 만들어보기.
+### 5.5. JSDoc 을 이용한 계산기 함수 만들어보기
 
 ````js
 /**
@@ -1585,6 +1602,8 @@ const resultMinus = minus(5, 4);
 const resultMulti = multi(5, 4);
 const resultDivide = divide(5, 0);
 ````
+
+- 추가 함수
 
 ````js
 /**
@@ -1688,7 +1707,7 @@ function calcurator(symbol, a, b) {
 
 ```js
 /**
- * 메세지를 콘솔에 출력하기.
+ * 메시지를 콘솔에 출력하기
  * @param {string} message - 출력할 메시지
  */
 function showMessage(message) {
@@ -1701,7 +1720,7 @@ showMessage("홍길동 반가워");
 ```js
 /**
  * 배열을 받아서 요소를 출력하는 함수
- * @param {number[]} arr - 숫자모음 배열
+ * @param { number[] } arr - 숫자모음 배열
  */
 function showArr(arr) {
   for (let i = 0; i < arr.length; i++) {
@@ -1712,8 +1731,8 @@ function showArr(arr) {
 
 ```js
 /**
- * 객체의 속성값을 출력하는 기능
- * @parma { {id:number,nicName:string, age:number } } user - 사용자 객채
+ * 객체의 속성 값을 출력하는 기능
+ * @param { {id:number, nickName:string, age:number } } user - 사용자 객체
  */
 function showUser(user) {
   console.log(user.id);
@@ -1735,11 +1754,9 @@ function showUser(user) {
 function showAge(age = 0) {
   return age + 10;
 }
-
-showAge();
 ````
 
-### 5.8. 매개변수의 총 개수 자동으로 알아내기.
+### 5.8. 매개변수의 총 개수 자동으로 알아내기
 
 ```js
 /**
@@ -1755,10 +1772,10 @@ function showTotal() {
   return total;
 }
 
-showTotal(4, 5, 6, 7, 8, 9, 1, 2, 0);
+const result = showTotal(4, 5, 6, 7, 8, 9, 1, 2, 0);
 ```
 
-- Rest 파라메터는 전달된 매개변수에 `정확한 값만 배열`로 만든다.
+- Rest 파라메터는 전될된 매개변수에 `정확한 값만 배열`로 만든다.
 
 ```js
 /**
@@ -1775,29 +1792,10 @@ function showTotal(...rest) {
   return total;
 }
 
-showTotal(4, 5, 6, 7, 8, 9, 1, 2, 0);
+const result = showTotal(4, 5, 6, 7, 8, 9, 1, 2, 0);
 ```
 
 - Rest 파라메터는 기본 매개변수 적용 후, `나머지를 배열로 추출`한다.
-
-```js
-/**
- * 입력된 매개 변수 만큼 총합계산하기
- * @param {number} numbers - 숫자 값
- */
-function showTotal() {
-  console.log(arguments);
-  let total = 0;
-  for (let i = 0; i < arguments.length; i++) {
-    total = total + arguments[i];
-  }
-  return total;
-}
-
-showTotal(4, 5, 6, 7, 8, 9, 1, 2, 0);
-```
-
-- Rest 파라메터는 전달된 매개변수에 `정확한 값만 배열`로 만든다.
 
 ```js
 /**
@@ -1816,7 +1814,7 @@ function showTotal(a, b, ...rest) {
   return total;
 }
 
-showTotal(4, 5, 6, 7, 8, 9, 1, 2, 0);
+const result = showTotal(4, 5, 6, 7, 8, 9, 1, 2, 0);
 ```
 
 ## 6. 함수 선언법을 꼭 이해하자.
@@ -1830,7 +1828,7 @@ function 함수명(매개변수) {
 함수명(매개변수);
 ```
 
-- 2.`변수의 값`으로 함수를 만드는 법 !!
+- 2. `변수의 값`으로 함수 만드는 법
 
 ```js
 const 변수명 = function (매개변수) {
@@ -1855,13 +1853,13 @@ const addFun = function () {
 const minusFun = function () {
   return 1 - 2;
 };
+// minusFun();
 
 function test(_func) {
   _func();
 }
 
 test(add); // 값이 아니라서 안된다.
-
 test(addFun);
 test(minusFun);
 ```
@@ -1879,33 +1877,33 @@ const addFN = function () {};
 
 ### 7.1. 함수를 만들 시점 (언제 함수를 만들까에 대한 안내)
 
-### 7.1.1. 코드가 너무 긴 경우(`하나의 결과를 만들기 위해서 작성시`)
+#### 7.1.1. 코드가 너무 긴 경우(`하나의 결과를 만들기 위해서 작성시`)
 
 - 코드 가독성이 너무 떨어져서 추후 분석이 곤란할때
 - 하나의 결과를 만들기 위한 과정을 작성중 너무 많은 코드가 작성될때
 - 여러 줄이 작성되어서 한개의 결과를 만든다면 함수로 묶어서 만들까? 고민하자.
 
-### 7.1.2. 동일한 기능이 여러 번 사용될때
+#### 7.1.2. 동일한 기능이 여러 번 사용될때
 
 - 2번이상 동일한 기능이라면 함수를 만들까? 고민
 - 2번이상 동일한 기능인데 재료(매개변수)만 다르다? 함수만들까? 고민
 
-### 7.1.3. 코드를 누군가에게 주어야 할때
+#### 7.1.3. 코드를 누군가에게 주어야 할때
 
-- 코드를 공유할 때 함수만들까?
+- 코드를 공유할 때 함수만들까? 고민
 
 ### 7.2. 함수 만드는 법
 
-- `{}`로 코드 블럭을 이용해서 묶어준다.
-- 이름을 짓는데, `동사`로 지어준다. (Camel, 생성자함수: Pascal )
-- 이름을 짓는데, `()` 를 작성한다.
+- `{}` 로 코드 블럭을 이용해서 묶어준다.
+- 이름을 짓는데, `동사`로 지어준다. (기본 : Camel, 생성자함수: Pascal )
+- 이름 뒤에 `()` 를 작성한다.
 - 이름 뒤에 `(재료, 재료)` 를 작성한다.
 - 이름 뒤에 `(매개변수, 매개변수)` 를 작성한다.
-- 이름 뒤에 `(param, param)` 를 작성한다.
-- finction 키워드를 작성해 준다.
-- JSDoc 으로 사용설명서를 작성해 주면 좋겠다.
+- 이름 뒤에 `(parameter, paramter)` 를 작성한다.
+- function 키워드를 작성해 준다.
+- `JSDoc` 으로 사용설명서를 작성해 주면 좋겠다.
 
-### 7.3. 함수 사용법(`호출, call` 등으로 명칭함)
+### 7.3. 함수 사용법(`호출, Call` 등으로 명칭함)
 
 - 함수명();
 - 함수명을 호출했다.
@@ -1918,21 +1916,22 @@ const addFN = function () {};
 ````js
 /**
  * 너비를 계산해 주는 함수
- * @param {number}_width
- * @param {number}_height
+ * @param {number} _width
+ * @param {number} _height
  * @returns {number}
  * -- 함수사용 예 --
  * ```js
- * const result = calcRect(5, 4);
+ *  const result = calcRect(5, 4);
  * ```
  */
-function calcRect(_width, _height) {
+function calcRect(_width = 0, _height = 0) {
   // 추후에 무수하게 예외처리 코드가 작성이 된다.
   // 업데이트 진행
   return _width * _height;
 }
 // 함수 호출
-const result = calcRect(5, 4); // 함수를 만드는 법
+const result = calcRect(5, 4);
+console.log(result);
 ````
 
 ### 7.5. 함수에 추가 지식
@@ -1940,48 +1939,44 @@ const result = calcRect(5, 4); // 함수를 만드는 법
 - 매개변수에 기본값을 지정할 수 있다.
 
 ```js
-function 함수명(매개변수1, 매개변수2) {
-  const prams = arguments; // 배열로 접근 가능
-}
-함수명(1, 2, 3, 4, 5);
+function 함수명(매개변수 = 기본값) {}
 ```
 
 - 매개변수 개수에는 제한이 없다.
-- arguments 말고 `rest 파라메터`를 쓰자.
 
 ```js
 function 함수명(매개변수1, 매개변수2) {
-  const prams = rest; // 배열로 접근 가능
+  const params = arguments; // 배열로 접근 가능
 }
 함수명(1, 2, 3, 4, 5);
 ```
 
-- 기본 함수 작성법 2가지
+- arguments 말고 `rest 파라메터`를 쓰자.
 
 ```js
-// 기본 함수 정의
-function 함수명() {}
+function 함수명(매개변수1, 매개변수2, ...res) {
+  const params = res; // 배열로 접근 가능
+}
+함수명(1, 2, 3, 4, 5);
 ```
 
-- 함수를 표현식으로 만드는법
-- 변수에 함수를 담는 이유는 `함수의 매개변수`
+- 함수를 `표현식(Expression)`으로 만드는법
+- 변수에 함수를 담는 이유는 `함수에 매개변수`에 전달하려고
 
 ```js
 // 함수 표현식 정의
 const 함수명 = function () {};
-```
 
-```js
 const add = function () {};
-
 function calcFunc(_fn) {
   add();
 }
+calcFunc(add);
 ```
 
-- 콜백함수는 `특정한 이벤트` 가 발생시 덩달아서 실행
+- 콜백함수는 `특정한 이벤트`가 발생시 덩달아서 실행(추후 다시 보자)
 
-## 8. 화살표 함수
+## 8. 화살표 함수(Arrow Function)
 
 - FE 에서 함수 작성시 많이 볼수 있는 형태
 - 활용 비율이 높다. 반드시 이해해 보자.
@@ -1989,17 +1984,16 @@ function calcFunc(_fn) {
 ### 8.1. 화살표 함수가 필요한 이유
 
 - 함수가 간략해 집니다.
-- 함수가 최적화 됩니다. (메모리절약, 성능 최적화)
-- this 의 범위가 고정됩니다. (추후 진행)
-- new 를 사용못합니다. (추후 진행)
+- 함수가 최적화 됩니다. (메모리 절약, 성능 최적화)
+- this 의 범위가 고정됩니다.
+- new 를 사용못합니다.
 
-### 8.2. 화살표 함수 작성법(반드시 이해하세요!)
+### 8.2. 화살표 함수 작성법 (반드시 이해하세요.)
 
 - 매개변수가 없는 경우
 
 ```js
-calcFunc(add);
-// 기본함수
+// 기본 함수
 function say() {
   console.log("안녕");
 }
@@ -2007,14 +2001,12 @@ function say() {
 const say = function () {
   console.log("안녕");
 };
-// 화살표 함수
+// 화살표함수
 const sayArrow = () => {
   console.log("안녕");
 };
-// 코드가 실행코드가 1줄이면 {} 생략 가능
-const sayArrow2 = () =>
-  // 중괄호 생략가능 (한줄이면 )
-  console.log("안녕");
+// 실행 코드가 1 줄이면 {} 블럭 생략 가능
+const sayArrow2 = () => console.log("안녕");
 ```
 
 - `매개변수`가 오로지 `1개 있을 때`
@@ -2040,7 +2032,7 @@ const sayArrow2 = (_word) => console.log(_word);
 const sayArrow3 = (_word) => console.log(_word);
 ```
 
-- 매개변수가 2개 이상일 때 적용.
+- 매개변수가 2개 이상일 때
 
 ```js
 // 기본 함수
@@ -2059,14 +2051,14 @@ const sayArrow = (_word, _name) => {
 const sayArrow2 = (_word, _name) => console.log(_word + _name);
 
 // 실행 코드가 1 줄이면 {} 블럭 생략 가능
-// 매개변수 () 가 생략이 가능하다.
+// 매개변수 2개 이상은 () 가 필수
 const sayArrow3 = (_word, _name) => console.log(_word + _name);
 ```
 
-## 9. 스코프(범위, Seope)의 이해
+## 9. 스코프(Scope)의 이해
 
 - 변수의 활용 가능한 범위
-- **_ 제일 중요한 것은 `{}` 입니다. _**
+- 제일 중요한 것은 `{}` 입니다.
 
 ### 9.1. Scope 의 종류 2가지
 
@@ -2078,12 +2070,28 @@ const sayArrow3 = (_word, _name) => console.log(_word + _name);
 - 프로그램 어디서든 마음대로 접근해서 활용
 
 ```js
+// 전역 변수
 const appName = "JavaScript World";
+
 {
   console.log(appName);
 }
+
 function say() {
   console.log(appName);
+}
+say();
+```
+
+```js
+// 전역 자리
+function say() {
+  console.log("안녕");
+}
+
+// 지역 자리
+{
+  say();
 }
 
 say();
@@ -2091,7 +2099,7 @@ say();
 
 ### 9.3. 지역 범위
 
-- `{} ` 블록 안쪽을 `지역범위` 라고 합니다.
+- `{}` 블록 안쪽을 `지역범위`라고 합니다.
 
 ```js
 {
@@ -2107,52 +2115,50 @@ say();
 ```
 
 - 아래는 정상적으로 실행된다.
-- `function` 키워드는 전역 범위에 등록이 된다.
+- `function 키워드`는 전역 범위에 등록이 된다.
 - 개발자의 선택권한 없다.
 
 ```js
-// 전역  자리
-function say() {
-  console.log("안녕");
-}
-
-// 지역 자리
-{
-  say();
-}
-say();
-
-// 전역  자리
-function say(_name) {
-  console.log(_name + "안녕");
-}
-say("홍길동");
-// 지역 자리
-{
-  say();
-}
-say();
-```
-
 // 전역 자리
 
-// 개발자: 홍길동 지역 자리..
-
-```js
+// 지역 자리
 {
   function say(_name) {
-    console.log(_name + "반가워");
+    console.log(_name + " 안녕");
   }
-  say("고길동");
+  say("홍길동");
 }
-say("테스터");
+
+say("박길동");
 ```
 
 - function 은 전역에 등록되므로 예측 곤란
-- 아래 코드는 협업 실패 : `function` 은 전역에 등록해서 쓰자.
-- `function` 은 지역에 코드하지 말자.
+- 아래 코드는 협업 실패 : `function ` 은 전역에 등록해서 쓰자
+- `function ` 은 지역에 코드하지 말자.
 
-- 아래를 추천함
+```js
+// 전역 자리
+
+// 개발자: 홍길동 지역 자리
+{
+  function say(_name) {
+    console.log(_name + " Hello");
+  }
+  say("홍길동");
+}
+
+// 개발자 : 고길동 지역자리
+{
+  function say(_name) {
+    console.log(_name + " 반가워");
+  }
+  say("고길동");
+}
+
+say("테스터");
+```
+
+- 아래를 추천함.
 
 ```js
 // 전역 자리
@@ -2178,6 +2184,8 @@ function say(_word) {
 say("테스터");
 ```
 
+- 화살표로 고치면
+
 ```js
 // 전역 자리
 function say(_word) {
@@ -2200,21 +2208,21 @@ say("테스터");
 
 ## 10. `this` 라는 키워드가 우리를 괴롭힐 겁니다.
 
-- `this` 가 스코프와 연결되면서 혼란스럽다.
+- this 가 스코프와 연결되면서 혼란스럽다.
 
 ### 10.1. 전역 스코프의 this 는 `Window` 이다.
 
 ```js
-console.log(this); // Window{....}
+console.log(this); // Window{....
 ```
 
-### 10.2. function 의 this 는 `Window` 입니다.
+### 10.2. function 의 this 는 `Window` 이다.
 
 ```js
 function say() {
-  console.log(this);
+  console.log(this); // Window{....
   function hi() {
-    console.log(this);
+    console.log(this); // Window{....
   }
   hi();
 }
@@ -2228,10 +2236,10 @@ const say = function () {
 say();
 ```
 
-### 10.3. function 또는 표현식 함수는 this 사용 시 위험한 코드이다.
+### 10.3. function 또는 표현식 함수는 this 사용시 위험한 코드이다.
 
 - this 는 동일한 스코프를 가르쳐서 값이 변할 위험 존재
-- this 는 물어보지도 않고 var 변수를 만들고 wondow에 변수에 등록
+- this 는 물어보지도 않고 `var 변수`를 만들고 window 변수에 등록
 
 ```js
 var brand = "nike";
@@ -2246,7 +2254,7 @@ now();
 console.log("함수 실행후 : ", brand);
 ```
 
-### 10.4.객체에 만든 함수에서의 this
+### 10.4. 객체에 속성으로 만든 함수에서의 this
 
 - 객체에서 this 는 객체 전체를 가르킨다.
 - 어? function 사용하니까 `this 가 상황에 따라서 변하는데?`
@@ -2259,8 +2267,7 @@ const Person = {
     console.log(this);
   },
 };
-console.log(Person.name);
-Person.age;
+
 Person.sayHi();
 ```
 
@@ -2273,29 +2280,33 @@ Person.sayHi();
 function Coffee() {
   console.log(this);
 }
+
 Coffee();
 new Coffee();
 ```
 
 ### 10.6. 내가 이해하기로 아래처럼 정리했다.
 
-- function 에 작성한 곳에 this 는 `어디서 함수를 사용했는가`에 따라 다르다.
+- function 에 작성한 this 는 `어디서 함수를 사용했는가`에 따라 다르다.
 
 ```js
-function say() {
-  this 는? window 가 된다.
+function say(){
+  this 는 ?  window 가 된다.
 }
-say(); 지금은 global 영역 즉, window 에서 사용했으므로
+say();   지금은 global 영역 즉, window 에서 사용했으므로
 ```
 
 ```js
 const Person = {
-  say: function () {
-    this 는 ? Person 을 가리킨다.
+
+  say: function (){
+      this 는 ?   Person 을 가르킨다.
   }
+
 }
 
-Person.say(); 지금은 Person 이  say 함수를 사용했으므로
+Person.say(); 지금은 Person 이 say 함수를 사용했으므로
+
 ```
 
 - 과연 출력 결과는 무엇이 나올까요?
@@ -2311,58 +2322,18 @@ const Person = {
 Person.say();
 ```
 
-### 10.7 화살표 함수의 this 는?
+### 10.7. 화살표 함수의 this 는 ?
 
-- 화살표 함수는 `상위 스코프` 를 가리킨다.
-
-```js
-const Person = {
-  name: "아이유",
-  say: () => {
-    console.log(this.name); // 아이유
-  },
-};
-
-Person.say();
-```
+- 화살표 함수는 `상위 스코프`를 가르킨다.
 
 ```js
+// 여기는 window
 const say = () => {
-  console.log(this); // 현재의 상위 범위를 가리킨다. (this => window)
+  console.log(this); // 현재의 상위 범위를 가리킨다.
   // window 출력됨
 };
 say();
 ```
-
-```js
-const Person = {
-  name: "아이유",
-  say: function() {
-    console.log(this.name);
-  }
-}
-Person.say():
-```
-
-### 예제
-
-```js
-const Person = {
-  name: "아이유",
-  say: function () {
-    console.log(this); // Person 객체
-    console.log(this.name); // 아이유
-  },
-  sayArrow: () => {
-    console.log(this); // window
-    console.log(this.name); // window,name undefined
-  },
-};
-Person.say();
-Person.sayArrow();
-```
-
-## 예제2
 
 ```js
 const Person = {
@@ -2440,27 +2411,28 @@ const d = new Person("고길동");
 d.say();
 ```
 
-## 12. Class (클래스)
+## 12. 클래스
 
-- 목적이 `객체를 생성` 하는 것
+- 목적이 `객체를 생성`하는 것
 
-### 12.1. 생성자 메소드( constructor Method )
+### 12.1. 생성자 메소드 ( constructor Method )
 
 ```js
 class Person {
   // 클래스에서 메소드 함수 만드는 법
-  메소드명() {}
+  // 메소드명(){}
+
   // 객체를 생성하는 함수 : 변경 불가
   // 디폴트 객체 생성자 함수
   constructor(_name, _age) {
-    console.log("new 하면 자동실행");
+    console.log("new 하면 자동 실행");
     console.log(_name);
     this.name = _name;
     this.age = _age;
   }
 }
 
-const a = new Person("둘리", 50000);
+const a = new Person("둘리", 500000);
 console.log(a);
 ```
 
@@ -2486,12 +2458,19 @@ a.say();
 
 ### 12.3. 나의 속성 만들기
 
-- property : 프로퍼터
+- Property : 프로퍼티
 - constructor 메소드에서 만든다.
+
+```js
+ constructor(_name, _age) {
+    this.name = _name;
+    this.age = _age;
+  }
+```
 
 ### 12.4. 상속 이해해 보기
 
-- 단계 1.
+- 1단계
 
 ```js
 // 동물
@@ -2512,6 +2491,7 @@ class Dog {
 class Bird {
   constructor() {
     this.eye = 2;
+    this.nose = 1;
   }
 }
 ```
@@ -2573,24 +2553,25 @@ console.log(c);
 - 만약 java 라면
 
 ```java
-public : 마음대로 접근가능, 공유
+public  : 마음대로 접근가능, 공유하는
 private : 사적인 즉, 클래스 내부에서만 접근가능
-protected : 상속 받은 클래스들만 접근 가능.
+protected : 상속 받은 클래스들만 접근 가능
 ```
 
 - 만약 javaScript 라면
 
 ```js
-public : 마음대로 접근가능, 공유
-# : 사적인 즉, 클래스 내부에서만 접근가능. // private를 안쓰고 "#" 사용
+public : 마음대로 접근가능, 공유하는
+#  : 사적인 즉, 클래스 내부에서만 접근가능(private 역할)
 ```
 
 ```js
 class Animal {
   // 안적으면 public (기본값)
   eye;
-  // # 을 적으면 private
+  // #을 적으면 private
   #nose;
+
   constructor(eye, nose) {
     this.eye = eye;
     this.#nose = nose;
@@ -2602,10 +2583,11 @@ class Dog extends Animal {
     super(2, 5);
   }
 }
+
 const a = new Dog();
 console.log(a);
 console.log(a.eye);
-console.log(a.#nose); // pravate 오류
+console.log(a.#nose); // private 오류
 ```
 
 ### 12.6. static : 클래스에 고정된 속성, 메소드
@@ -2620,13 +2602,13 @@ MathCalc.add(3, 4);
 MathCalc.minus(3, 4);
 
 const a = new MathCalc();
-a.add(3, 4); // 에러: 생송된 객체로 접근 불가
+a.add(3, 4); // 에러:생성된 객체로 접근 불가
 ```
 
-# 13. 콜백함수
+## 13. 콜백함수
 
-- `cail` 은 함수를 실행(호출)한다는 의미
-- 일반 함수에 `매개변수로 전달된 함수를 callback` 함수라 칭한다.
+- `call` 은 함수를 실행(호출)한다는 의미
+- 일반 함수에 `매개변수로 전달된 함수`를 callback 함수라 칭한다.
 
 ### 13.1. 콜백함수 활용처
 
@@ -2641,8 +2623,10 @@ const cry = () => {};
 function run(a) {
   a();
 }
+
 run(say);
-run(cry);
+run(눈물);
+
 // 아래 추천함.
 run(function () {});
 ```
@@ -2650,4 +2634,455 @@ run(function () {});
 ```js
 const bt = document.querySelector(".bt");
 bt.addEventListener("click", function () {});
+```
+
+## 14. 객체(Object)
+
+### 14.1. 객체를 `가장 간단`하게 만드는 법.
+
+- `객체 리터럴`로 생성한다.
+- `리터럴(literal)` 이라는 단어는 꼭 정의해 두세요.
+  - 리터럴은 정해진 `값을 개발자가 직접 작성`해 주는 것.
+  - 숫자 리터럴, 문자열 리터럴, 배열 리터럴, 객체 리터럴 등
+
+```js
+const 객체 = {
+  객체키명: 키값,
+  객체키명: 키값,
+};
+```
+
+- 만약 객체를 1개씩 만든다면 즉, `객체리터럴로 생성한다`면 객체명은 `Camel Case`로
+
+```js
+const personInfo = {
+  nickName: "아이유",
+  age: 20,
+  job: "singer",
+};
+```
+
+### 14.2. 여러 개의 동일한 형태(구조)의 객체를 생성한다면
+
+- `객체 생성자 함수`를 이용하는 법 (함수 이름이 `Pascal Case`)
+
+```js
+function PersonInfo(_name, _age) {
+  this.nickName = _name;
+  this.age = _age;
+  this.job = "singer";
+}
+const 아이유 = new PersonInfo("아이유", 20);
+const BTS = new PersonInfo("BTS", 20);
+```
+
+- `클래스`를 이용하는 법 (클래스 이름이 `Pascal Case`)
+
+```js
+class PersonInfo {
+  constructor(_name, _age) {
+    this.nickName = _name;
+    this.age = _age;
+    this.job = "singer";
+  }
+}
+const 아이유 = new PersonInfo("아이유", 20);
+const BTS = new PersonInfo("BTS", 20);
+```
+
+### 14.3. 연습예제
+
+```js
+const student_1 = {
+  name: "홍길동",
+  age: 10,
+};
+const student_2 = {
+  name: "둘리",
+  age: 2000,
+};
+
+function Student(_name, _age) {
+  this.name = _name;
+  this.age = _age;
+}
+const student_1 = new Student("홍길동", 20);
+const student_2 = new Student("둘리", 2000);
+```
+
+### 14.4. 객체에 값 말고 `기능 추가` 하기
+
+- 기능은 흔히 `메소드(Method)` 또는 `행위(Behavior)` 라고 호칭
+- 객체 리터럴로 메소드 추가해 보기
+
+```js
+const student_! = {
+  name: "홍길동",
+  age: 20,
+  // 정확하게는 Property 로 기능 정의하기
+  sayName: function () {
+    this.name // 객체
+    },
+    // 화살표 함수는 곤란합니다. (주의)
+  sayAge: () => {
+    this.age
+    }, // window
+  // 가장 최신 문법으로서 정확히 메소드 임을 표현
+  sayHi() {},
+};
+```
+
+위의 `객체 생성자 함수` 로 수정해 보자.
+
+```js
+function Student(_name, _age){
+  this.name = _name;
+  this.age = _age;
+  this.sayName = function () {
+    console.log(this.name); // 객체
+  },
+  // 아 위험하다. 화살표 주의
+  this.sayAge = () => {
+    console.log(this.age); // window
+  },
+  // this.sayHi = () {
+  //   console.log(this.age);
+  // },
+}
+// 같은 리소스를 사용할 때는 prototype 쓰자
+Student.prototype.sayHi = function(){}
+
+const student_1 = new Student("홍길동", 20)
+```
+
+- 클래스로 만들어 보자. (지금은 괜찮다. 활용도 떨어진다.)
+
+```js
+class Student {
+  constructor(_name, _age) {
+    this.name = _name;
+    this.age = _age;
+  }
+  sayName() {
+    this.name;
+  }
+  // 화살표 독특하다. class 의 화살표는 객체
+  sayAge = () => {
+    this.age;
+  };
+  sayHi() {
+    this.name;
+  }
+}
+const student_1 = new Student("홍길동", 20);
+```
+
+- `정말 중요함1. : vue, React 에서는 기본이 객체 생성으로 시작함.`
+- `정말 중요함2. : vue, React 에서는 화살표 함수를 기본으로 함.`
+- 객체 생성자 함수, 클래스의 화살표 함수에서의 `this 는 모듈 객체` 를 가르킨다.
+
+## 15. 배열(Array)
+
+- 데이터 종류와 상관없이 여러개를 `인덱싱(순서)` 을 할 수 있습니다.
+
+### 15.1. 배열 만드는 법
+
+```js
+// 가장 많이 함 (배열 리터럴)
+const 배열명 = [요소, 요소, 요소];
+// 밑에는 추천하지 않음
+const 배열명 = new Array(3); // ex 방 3칸을 준비해
+```
+
+### 15.2. 배열의 요소를 인덱스로 찾기
+
+```js
+const 배열 = [1, "안녕", false, function () {}];
+배열[0];
+배열[1];
+배열[2];
+배열[3];
+```
+
+### 15.3. 배열도 객체라서 `속성이` 있어요.
+
+```js
+const 배열 = [1, 3, 5];
+배열.length; // 3개
+```
+
+### 15.4. 무지막지하게 데이터 종류 중 배열을 다룹니다.
+
+- 일반적 데이터 형태: `[{},{},{},{}]`
+- 배열을 프로그래밍에서 많이 다루므로 `미리 함수를 제공`함.(빌트인 함수).
+- 주의 사항으로 `절대로 원본을 훼손하지 마셔야 합니다`. (불변성 유지).
+
+### 15.5. 배열을 다루는 함수에서 원본을 훼손하는 배열함수
+
+- `이거 쓰시면 안됩니다.`
+
+- push() : 배열 `끝`에 추가
+
+```js
+const lunchArr = ["사과", "딸기", "과자", "햄버거"];
+lunchArr.push("커피");
+console.log(lunchArr);
+// 커피 추가 (원본 훼손)
+// [  "사과",  "딸기",  "과자",  "햄버거",  "커피"]
+```
+
+- pop() : `끝` 요소 제거 및 제거된 요소 반환
+
+```js
+const lunchArr = ["사과", "딸기", "과자", "햄버거"];
+lunchArr.pop();
+console.log(lunchArr);
+// 햄버거 제거 (원본 훼손)
+// [  "사과",  "딸기",  "과자"]
+```
+
+- unshift() : `앞` 요소 추가
+
+```js
+const lunchArr = ["사과", "딸기", "과자", "햄버거"];
+lunchArr.unshift("커피");
+console.log(lunchArr);
+// 햄버거 앞자리 추가 (원본 훼손)
+// ["커피", "사과",  "딸기",  "과자", "햄버거"]
+```
+
+- shift() : `앞 첫번째` 요소 제거
+
+```js
+const lunchArr = ["사과", "딸기", "과자", "햄버거"];
+lunchArr.shift();
+console.log(lunchArr);
+// 햄버거 앞자리 제거 (원본 훼손)
+// ["딸기",  "과자", "햄버거"]
+```
+
+- splice() : `원하는 인덱스` 부터 추가, 제거
+
+```js
+const lunchArr = ["사과", "딸기", "과자", "햄버거"];
+lunchArr.splice(1, 2);
+console.log(lunchArr);
+// 인덱스로 부터 개수만큼 제거 (원본 훼손)
+// ["사과", "햄버거"]
+```
+
+- sort() : 배열의 순서를 정렬하기
+
+```js
+const lunchArr = ["사과", "딸기", "과자", "햄버거"];
+lunchArr.sort();
+console.log(lunchArr);
+// ['과자', '딸기', '사과', '햄버거']
+const enArr = ["k", "o", "r", "e", "A", "j", "p", "a", "n"];
+
+// 원본훼손
+enArr.sort();
+console.log(enArr);
+// ['A', 'a', 'e', 'j', 'k', 'n', 'o', 'p', 'r']
+const numArr = [1, 2, 12, 25, 37, 30];
+// 원본훼손
+numArr.sort();
+console.log(numArr);
+// 단순히 sort() 를 사용하면 앞 글자를 기준으로 정렬됨.
+// [1, 12, 2, 25, 30, 37]
+
+// 내림 차순으로 정렬해 보자.
+// numArr.sort((a, b) => b - a);
+// [37, 30, 25, 12, 2, 1]
+
+// 올림 차순
+numArr.sort((a, b) => a - b);
+console.log(numArr);
+// [1, 2, 12, 25, 30, 37]
+```
+
+- reverse() : `역순` 순서를 뒤집어 저장
+
+```js
+const numArr = [1, 2, 12, 25, 37, 30];
+// 원본 훼손
+numArr.reverse();
+console.log(numArr);
+// [30, 37, 25, 12, 2, 1]
+```
+
+- fill() : 요소에 값을 채운다.
+
+```js
+const numArr = [1, 2, 12, 25, 37, 30];
+// 원본 훼손
+// numArr.fill(0);
+console.log(numArr);
+// [0, 0, 0, 0, 0, 0]
+// 값 1 을 채워라
+// 인덱스 3번으로 부터
+// 인덱스 5번 전까지
+numArr.fill(1, 3, 5);
+console.log(numArr);
+// [1, 2, 12, 1, 1, 30]
+```
+
+- flat() : `배열을 평탄화` 사용합니다.
+  : flat 을 위한 별도의 라이브러가 존재합니다.
+  : react 에서 모듈을 설치해서 사용합니다.
+
+```js
+const numArr = [1, 2, 3, ["a", "b", "c"], 8, 9];
+// flat(배열의 단계)
+const result = numArr.flat(1);
+console.log(result);
+// [1, 2, 3, 'a', 'b', 'c', 8, 9]
+const num2Arr = [1, 2, [3, [4, [5, 6]]], 100];
+const result2 = num2Arr.flat(1);
+console.log(result2);
+// [1, 2, 3, Array(2), 100]
+const result3 = result2.flat(1);
+console.log(result3);
+// [1, 2, 3, 4, Array(2), 100]
+const result4 = result3.flat(1);
+console.log(result4);
+// [1, 2, 3, 4, 5, 6, 100]
+```
+
+### 15.6. 배열을 다루는 함수에서 원본을 훼손하지 않고 `새로운 배열을 만들어 주는 함수`
+
+- `데이터 불변성(immutability)` 유지하셨나요?
+
+#### 15.6.1. map()
+
+- `star가 1000만개` 가치가 있고, 자주활용
+- 원본 배열의 요소에 동일한 함수 실행 후 새로운 배열로 생성
+
+```js
+const originArr = ["홍길동", "고길동", "김수한무"];
+const copyArr = originArr.map(function (item, index, arr) {
+  // console.log(`item : ${item}, index: ${index}`);
+  const tag = `<div class="user-info">${item}</div>`;
+  console.log(tag);
+  // 리턴해야 배열이 담깁니다.
+  return tag;
+});
+console.log(`원본 originArr : ${originArr}`);
+console.log(`복제본 copyArr : ${copyArr}`);
+
+const copyArrowArr = originArr.map((item, index) => {
+  return `<a href="${index}">${item}</a>`;
+});
+console.log(`복제본 copyArrowArr : ${copyArrowArr}`);
+```
+
+#### 15.6.2. filter()
+
+- 조건에 참인 것만 모아서 배열 리턴
+- 자주 사용은 합니다.
+
+```js
+const memberHong = {
+  age: 10,
+  name: "홍길동",
+  role: "GUEST",
+};
+const memberKim = {
+  age: 18,
+  name: "김수한무",
+  role: "MEMBER",
+};
+const memberPark = {
+  age: 25,
+  name: "박둘리",
+  role: "ADMIN",
+};
+
+const originArr = [memberHong, memberKim, memberPark];
+
+const result = originArr.filter(function(item, index) => {
+  // return item.role === "ADMIN";
+  return item.age <= 20;
+});
+console.log(result);
+```
+
+#### 15.6.3. slice()
+
+- 배열의 일부를 복사한다.
+
+```js
+const numArr = [1, "a", "b", 4];
+// 시작 인덱스로 부터 도착 인덱스 미만 요소 출력
+const nowArr = numArr.slice(1, 3);
+console.log(numArr);
+console.log(nowArr); //  ['a', 'b']
+```
+
+#### 15.6.4. concat();
+
+- 배열을 `합쳐서` 하나의 배열을 리턴.
+
+```js
+const numArr1 = [1, "a", "b", 4];
+const numArr2 = [8, 100];
+const result = numArr1.concat(numArr2);
+console.log(result);
+// [1, 'a', 'b', 4, 8, 100]
+```
+
+#### 15.6.5. reduce();
+
+- 배열의 요소를 탐색하면서 누적 연산함.
+- 누적된 결과를 출력함.
+
+```js
+const numArr1 = [1, 2, 3, 4];
+// 문법이 좀 다릅니다.
+// 보통은 ===>  (item, index, arr)
+// const total = numArr1.reduce(함수, 초기값)
+const total = numArr1.reduce((acc, cur) => {
+  console.log("acc : ", acc);
+  console.log("cur : ", cur);
+  return acc + cur;
+}, 0);
+
+console.log("total : ", total);
+```
+
+#### 15.6.6. join();
+
+- 문자열로 배열을 연결한 결과를 만든다.
+
+```js
+const numArr1 = [1, 2, 3, 4];
+// 기본은 ,  연결된 글자
+const result = numArr1.join("#");
+// 결과는 string
+console.log(`typeof ${typeof result} , ${result}`);
+// typeof string , 1#2#3#4
+```
+
+#### 15.6.7. indexOf();
+
+- 찾는 요소가 몇번째 인덱스 인지를 파악
+
+```js
+const numArr1 = [1, 2, 3, 4];
+// 기본은 ,  연결된 글자
+const result = numArr1.indexOf(3);
+console.log(`typeof ${typeof result} , ${result}`);
+// typeof number , 인덱스 2
+```
+
+#### 15.6.8. includes();
+
+- 요소가 포함되었는지 아닌지
+
+```js
+const numArr1 = [1, 2, 3, 4];
+// 기본은 ,  연결된 글자
+const result = numArr1.includes(3);
+console.log(`typeof ${typeof result} , ${result}`);
+// typeof boolean , true
 ```
