@@ -3330,3 +3330,78 @@ getData("users", usersParser);
 - 2개의 매개변수를 전달 받는다.
 - resolve 콜백함수: 성공시 실행함수
 - reject 콜백함수: 실패시 실행함수
+
+```js
+getData("posts")
+  .then(function (data) {
+    return getData("comments");
+  })
+  .then(function (data) {
+    return getData("albums");
+  })
+  .then(function (data) {
+    return getData("photos");
+  })
+  .then(function (data) {
+    return getData("todos");
+  })
+  .then(function (data) {
+    return getData("users");
+  })
+  .catch(function (err) {});
+```
+
+### 17.6. async / await
+
+- 강력히 추천합니다.
+- Promise 를 편하게 쓰기위해서 최신 문법 제공
+- `function 키워드 앞쪽에 async` 를 작성합니다.
+- `BE 연동 쪽에 await` 를 작성합니다.
+- 1단계
+
+```js
+async function getAllData() {
+  try {
+  } catch (arror) {}
+}
+
+getAllData();
+```
+
+- 2단계
+
+```js
+async function getAllData() {
+  try {
+    const apiUrl = "https://jsonplaceholder.typicode.com";
+    // BE 데이터 연동 시도
+    let res = await fetch(`${apiUrl}/posts`);
+    let data = res.json();
+    console.log(data);
+
+    res = await fetch("https://jsonplaceholder.typicode.com/comments");
+    data = await res.json();
+    console.log(data);
+
+    res = await fetch("https://jsonplaceholder.typicode.com/albums");
+    data = await res.json();
+    console.log(data);
+
+    res = await fetch("https://jsonplaceholder.typicode.com/photos");
+    data = await res.json();
+    console.log(data);
+
+    res = await fetch("https://jsonplaceholder.typicode.com/todos");
+    data = await res.json();
+    console.log(data);
+
+    res = await fetch("https://jsonplaceholder.typicode.com/users");
+    data = await res.json();
+    console.log(data);
+  } catch (error) {
+    console.log("ERROR 입니다. : " + error);
+  }
+}
+
+getAllData();
+```
